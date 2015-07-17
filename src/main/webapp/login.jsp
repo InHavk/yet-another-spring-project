@@ -11,7 +11,7 @@
 <body>
 
 <c:if test="${not empty param.error}">
-	<font color="red"> Error
+	<font color="red"> Invalid username / password
 	: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
 </c:if>
 <form method="POST" action="<c:url value="/j_spring_security_check" />">
