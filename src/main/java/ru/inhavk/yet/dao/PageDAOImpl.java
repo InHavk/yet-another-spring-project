@@ -1,5 +1,7 @@
 package ru.inhavk.yet.dao;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +29,11 @@ public class PageDAOImpl implements PageDAO {
 	@Override
 	public void editPage(PageEntity page) {
 		sessionFactory.getCurrentSession().update(page);
-
 	}
 
 	@Override
 	public void removePage(Integer id) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -41,6 +41,11 @@ public class PageDAOImpl implements PageDAO {
 		return (PageEntity) sessionFactory.getCurrentSession().createCriteria(PageEntity.class)
 				.add(Restrictions.like("url", url))
 				.uniqueResult();
+	}
+
+	@Override
+	public List<PageEntity> listPages() {
+		return sessionFactory.getCurrentSession().createCriteria(PageEntity.class).list();
 	}
 
 }

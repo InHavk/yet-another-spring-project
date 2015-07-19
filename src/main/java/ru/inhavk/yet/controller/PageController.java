@@ -19,8 +19,9 @@ public class PageController {
 	private PageService pageService;
 	
 	@RequestMapping("/")
-	public String home(){
-		return "redirect:/page/1";
+	public String home(Model model){
+		model.addAttribute("pages", pageService.listPages());
+		return "index";
 	}
 	
 	@RequestMapping("/page/{pageId}")
