@@ -19,12 +19,17 @@
           <c:forEach items="${pages}" var="page">
             <tr>
               <td>${page.name}</td>
-              <c:if test="${empty page.url}">
-                <td><a class="btn" href="page/${page.id}">Подробнее</a></td>
-              </c:if>
-              <c:if test="${!empty page.url}">
-                <td><a class="btn" href="p/${page.url}">Подробнее</a></td>
-              </c:if>
+              <td>
+                <c:if test="${empty page.url}">
+                  <a class="btn" href="page/${page.id}">Подробнее</a>
+                </c:if>
+                <c:if test="${!empty page.url}">
+                  <a class="btn" href="p/${page.url}">Подробнее</a>
+                </c:if>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+                  <a class="btn btn-warning" href="page/edit/${page.id}">Редактировать</a>
+                </sec:authorize>
+              </td>
             </tr>
           </c:forEach>
           <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">

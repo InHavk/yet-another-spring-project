@@ -6,9 +6,9 @@
 
 <t:editor>
   <jsp:attribute name="title">
-    Добавить страницу
+    Редактирование - ${page.name}
   </jsp:attribute>
   <jsp:attribute name="name">
-    Добавить страницу
+    ${page.name}
   </jsp:attribute>
 </t:editor>

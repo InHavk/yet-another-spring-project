@@ -29,6 +29,7 @@ public class PageDAOImpl implements PageDAO {
 	@Override
 	public void editPage(PageEntity page) {
 		sessionFactory.getCurrentSession().update(page);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override

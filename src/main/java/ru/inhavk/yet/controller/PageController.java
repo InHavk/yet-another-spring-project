@@ -47,5 +47,19 @@ public class PageController {
 		model.addAttribute("page", new PageEntity());
 		return "add_page";
 	}
+	
+	@RequestMapping(value="/page/edit/{pageId}", method=RequestMethod.POST)
+	public String editPage(@ModelAttribute("page") PageEntity page,
+			@PathVariable("pageId") Integer pageId, BindingResult result){
+		page.setId(pageId);
+		pageService.editPage(page);
+		return "redirect:/page/" + pageId;
+	}
+	
+	@RequestMapping(value="/page/edit/{pageId}", method=RequestMethod.GET)
+	public String editPageForm(@PathVariable("pageId") Integer pageId, Model model){
+		model.addAttribute("page", pageService.getPage(pageId));
+		return "edit_page";
+	}
 
 }
